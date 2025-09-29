@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BMU Teacher–Student Relationship Fun</title>
+  <style>
+    /* Simple “government site” look */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #005cb8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    #main {
+      padding: 20px;
+    }
+    label, select, input {
+      margin: 5px;
+      padding: 5px;
+      font-size: 1em;
+    }
+    button {
+      padding: 8px 15px;
+      font-size: 1em;
+    }
+    #result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bangladesh Maritime University – Teacher Fun Relationship</h1>
+  </header>
+  <div id="main">
+    <p>Select a BMU teacher and enter your name:</p>
+    <label for="teacherSelect">Teacher:</label>
+    <select id="teacherSelect">
+      <option value="">-- select --</option>
+      <option value="Md. Jobayer Mia">Md. Jobayer Mia</option>
+      <option value="Ariful Islam">Ariful Islam</option>
+      <option value="Most Israt Jahan Mili">Most Israt Jahan Mili</option>
+      <option value="Raju Ahmmed">Raju Ahmmed</option>
+      <option value="Dr. S M Rashidul Hasan">Dr. S M Rashidul Hasan</option>
+      <option value="Tanveer Ahmed">Tanveer Ahmed</option>
+      <option value="Md. Tuhin Hasan">Md. Tuhin Hasan</option>
+      <option value="Commodore Md. Atiqur Rahman">Commodore Md. Atiqur Rahman</option>
+    </select>
+    <br />
+    <label for="studentName">Your name:</label>
+    <input type="text" id="studentName" placeholder="Enter your name" />
+    <br />
+    <button onclick="calculateFun()">Show Relationship</button>
+    <div id="result"></div>
+  </div>
+  <footer>
+    &copy; 2025 Bangladesh Maritime University — Fun Relationship Simulator
+  </footer>
+
+  <script>
+    function randomElement(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function calculateFun() {
+      const teacher = document.getElementById('teacherSelect').value;
+      const student = document.getElementById('studentName').value.trim();
+      const resultDiv = document.getElementById('result');
+
+      if (!teacher || !student) {
+        resultDiv.innerHTML = '<span style="color:red;">Please pick a teacher and enter your name.</span>';
+        return;
+      }
+
+      // Define some “fun relationships”
+      const relationships = [
+        "Best Buddies 🫂",
+        "Quiz Nemesis 😈",
+        "Coffee Buddies ☕",
+        "Secret Mentor 🤫",
+        "Project Partners for Life 🔧",
+        "Friendly Rivals 🏁",
+        "Meme Conspirators 😂",
+        "Hallway Paparazzi 😜"
+      ];
+
+      // Define some funny compliments or remarks
+      const remarks = [
+        "Your combined knowledge could conquer sea and sky!",
+        "You two will debate about which ship is cooler.",
+        "Rumor says you will be the most mischievous duo in class.",
+        "Expect popcorn-worthy lectures when you pair up!",
+        "Your group project will shine — or at least be hilarious.",
+        "You two might accidentally solve world hunger one day (or at least DSM test).",
+        "Your jokes will become legendary among classmates.",
+        "Beware: you might get assigned the most absurd presentation topic together!"
+      ];
+
+      // Random picks
+      const relationship = randomElement(relationships);
+      const remark = randomElement(remarks);
+
+      // Create a random “score” (0 to 100)
+      const score = Math.floor(Math.random() * 101);
+
+      // Show result
+      resultDiv.innerHTML = `
+        Hello <strong>${student}</strong>! <br/>
+        Your relationship with <strong>${teacher}</strong> is: <strong>${relationship}</strong> <br/>
+        Compatibility score: <strong>${score}%</strong> <br/>
+        Remark: ${remark}
+      `;
+    }
+  </script>
+</body>
+</html>
